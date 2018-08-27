@@ -1,0 +1,34 @@
+import Fifo from '../src/fifo.fire'
+import * as inspect from 'inspect.js'
+
+const testData = inspect.readJSON('${__dirname}/fixtures/testdata.json')
+
+describe('Fifo', () =>
+  describe('class', () =>
+    it('instanciates a Fifo class', () =>
+      const fifo = new Fifo()
+      inspect(fifo).isObject()
+    )
+  )
+
+  describe('add()', () =>
+    it('Adds transactions to the transactions pool', () =>
+      const fifo = new Fifo()
+      fifo.add({
+        type: 'in',
+        amount: 12
+      })
+
+      inspect(fifo.transactions).isArray().hasLength(1)
+    )
+  )
+
+  describe('count()', () =>
+    it('should make a fifo count', () =>
+      const fifo = new Fifo()
+      fifo.transactions = testData
+      const res = fifo.count()
+      log res
+    )
+  )
+)

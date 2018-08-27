@@ -1,0 +1,36 @@
+export class Fifo
+  constructor ()
+    this.pool = []
+    this.transactions = []
+
+  add (transaction)
+    this.transactions.push(transaction)
+
+  count ()
+    const res = []
+
+    while true
+      const transaction = this.transactions.unshift()
+      if !transaction
+        break
+
+      if transaction.type === 'in'
+        this.pool.push(transaction)
+      elif transaction.type === 'out'
+        this.calculateTrade(transaction)
+    return res
+
+  calculateTrade (transaction)
+    const poolItem = this.pool.unshift
+    if poolItem.amount > transaction.amount
+      const res =
+        amount = transaction.amount
+        inPrice = poolItem.price
+        outPrice = transaction.price
+        profit = (transaction.amount * transaction.price) - (transaction.amount * poolItem.poolItem.price)
+
+      poolItem.amount -= transaction.amount
+      this.pool.shift(poolItem)
+      return res
+
+    throw new Error('Not implemented yet!')

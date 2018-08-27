@@ -1,0 +1,20 @@
+{
+  "name": "fifocount",
+  "version": "0.0.0",
+  "description": "FIFO counter",
+  "main": "dist/fifo.js",
+  "scripts": {
+    "test": "mocha --require firescript/register --reporter lagoon-reporter tests/**/*.spec.fire"
+  },
+  "keywords": [
+    "fifo"
+  ],
+  "author": "Andi Heinkelein <andi@noname-media.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "firescript": "^0.3.0",
+    "inspect.js": "^1.11.7",
+    "lagoon-reporter": "^0.4.0",
+    "mocha": "^5.2.0"
+  }
+}
