@@ -6,9 +6,9 @@ FIFO count is a module to get a **f**irst **i**n **f**irst **o**ut calculation o
 ## Usage
 
 ```js
-import Fifo from 'fifocount'
+import { FifoCount } from 'fifocount'
 
-const fifo = new Fifo()
+const fifo = new FifoCount()
 
 
 // add trades

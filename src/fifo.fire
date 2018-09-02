@@ -1,4 +1,4 @@
-export class Fifo
+export class FifoCount
   constructor ()
     this.pool = []
     this.transactions = []
