@@ -6,12 +6,22 @@
   },
   {
     "type": "out",
-    "amount": 2.3,
+    "amount": 3,
     "price": 150
   },
   {
     "type": "out",
-    "amount": 5.7,
+    "amount": 5,
     "price": 180
+  },
+  {
+    "type": "in",
+    "amount": 2,
+    "price": 190
+  },
+  {
+    "type": "out",
+    "amount": 6,
+    "price": 210
   }
 ]

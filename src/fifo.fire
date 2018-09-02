@@ -10,27 +10,54 @@ export class Fifo
     const res = []
 
     while true
-      const transaction = this.transactions.unshift()
+      const transaction = this.transactions.shift()
       if !transaction
         break
 
       if transaction.type === 'in'
         this.pool.push(transaction)
       elif transaction.type === 'out'
-        this.calculateTrade(transaction)
+        res.push(this.calculateTrade(transaction))
     return res
 
   calculateTrade (transaction)
-    const poolItem = this.pool.unshift
+    let poolItem = this.pool.shift()
     if poolItem.amount > transaction.amount
+      const profit = (transaction.amount * transaction.price) - (transaction.amount * poolItem.price)
       const res =
-        amount = transaction.amount
-        inPrice = poolItem.price
-        outPrice = transaction.price
-        profit = (transaction.amount * transaction.price) - (transaction.amount * poolItem.poolItem.price)
+        amount: transaction.amount
+        inPrice: poolItem.price
+        outPrice: transaction.price
+        profit: profit
 
       poolItem.amount -= transaction.amount
-      this.pool.shift(poolItem)
+      this.pool.unshift(poolItem)
+      return res
+    elif poolItem.amount <= transaction.amount
+      let profit = 0
+      let amount = transaction.amount
+
+      while amount > 0
+        const curAmount = Math.min(amount, poolItem.amount)
+        profit += (curAmount * transaction.price) - (curAmount * poolItem.price)
+        amount -= curAmount
+        poolItem.amount -= curAmount
+
+        if amount > 0 && poolItem.amount === 0
+           poolItem = this.pool.shift()
+
+           if !poolItem
+            throw Error('Transaction expected, but pool was empty')
+
+      if poolItem.amount > 0
+        this.pool.unshift(poolItem)
+
+      const res =
+        amount: transaction.amount
+        inPrice: poolItem.price
+        outPrice: transaction.price
+        profit: profit
+
       return res
 
     throw new Error('Not implemented yet!')

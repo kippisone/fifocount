@@ -12,7 +12,7 @@ describe('Fifo', () =>
   )
 
   describe('add()', () =>
-    it('Adds transactions to the transactions pool', () =>
+    it('adds transactions to the transactions pool', () =>
       const fifo = new Fifo()
       fifo.add({
         type: 'in',
@@ -28,7 +28,26 @@ describe('Fifo', () =>
       const fifo = new Fifo()
       fifo.transactions = testData
       const res = fifo.count()
-      log res
+      inspect(res).isEql([
+        {
+          inPrice: 120,
+          outPrice: 150,
+          amount: 3,
+          profit: 90
+        },
+        {
+          inPrice: 120,
+          outPrice: 180,
+          amount: 5,
+          profit: 300
+        },
+        {
+          inPrice: 190,
+          outPrice: 210,
+          amount: 6,
+          profit: 400
+        }
+      ])
     )
   )
 )
