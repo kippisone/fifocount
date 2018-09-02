@@ -1,6 +1,6 @@
 {
   "name": "fifocount",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "FIFO counter",
   "main": "dist/fifo.js",
   "scripts": {
