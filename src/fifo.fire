@@ -22,6 +22,9 @@ export class FifoCount
 
   calculateTrade (transaction)
     let poolItem = this.pool.shift()
+    if !poolItem
+      throw new Error('Transaction expected but pool was empty!')
+
     if poolItem.amount > transaction.amount
       const profit = (transaction.amount * transaction.price) - (transaction.amount * poolItem.price)
       const res =
