@@ -1,4 +1,4 @@
-module.exports.Fifo = class Fifo {
+module.exports.FifoCount = class FifoCount {
   constructor () {
     this.pool = [  ];
     this.transactions = [  ];
